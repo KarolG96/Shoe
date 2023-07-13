@@ -5,7 +5,7 @@ using Shoe.Services.ProductAPI.Models.Dto;
 
 namespace Shoe.Services.ProductAPI
 {
-	public class MappingConfig
+    public class MappingConfig
 	{
 		public static MapperConfiguration RegisterMaps()
 		{

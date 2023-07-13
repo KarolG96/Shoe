@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Shoe.Services.ProductAPI.Models.Dto
+namespace Shoe.Web.Models
 {
     public class ProductDto
     {

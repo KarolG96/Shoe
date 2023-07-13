@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shoe.Services.ProductAPI.Models;
+using Shoe.Services.ProductAPI.Models.Dto;
 
 namespace Shoe.Services.ProductAPI.DbContexts
 {
-	public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : DbContext
 	{
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

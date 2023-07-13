@@ -1,8 +1,8 @@
-﻿using Shoe.Services.ProductAPI.Models.Dto;
+﻿using Shoe.Services.ProductAPI.Models;
 
 namespace Shoe.Services.ProductAPI.Repository
 {
-	public interface IProductRepository
+    public interface IProductRepository
 	{
 		Task<IEnumerable<ProductDto>> GetProducts();
 		Task<ProductDto> GetProductById(int productId);

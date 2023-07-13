@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shoe.Services.ProductAPI.Models;
 using Shoe.Services.ProductAPI.Models.Dto;
 using Shoe.Services.ProductAPI.Repository;
 
 namespace Shoe.Services.ProductAPI.Controllers
 {
-	[Route("api/products")]
+    [Route("api/products")]
 	public class ProductAPIController : ControllerBase
 	{
 		protected ResponseDto _response;

@@ -6,7 +6,7 @@ using Shoe.Services.ProductAPI.Models.Dto;
 
 namespace Shoe.Services.ProductAPI.Repository
 {
-	public class ProductRepository : IProductRepository
+    public class ProductRepository : IProductRepository
 	{
 		private readonly ApplicationDbContext _db;
 		private IMapper _mapper;
