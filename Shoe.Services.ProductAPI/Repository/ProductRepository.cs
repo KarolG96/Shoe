@@ -3,7 +3,6 @@ using Microsoft.EntityFrameworkCore;
 using Shoe.Services.ProductAPI.DbContexts;
 using Shoe.Services.ProductAPI.Models;
 using Shoe.Services.ProductAPI.Models.Dto;
-using Shoe.Services.ProductAPI.Models.Dtos;
 
 namespace Shoe.Services.ProductAPI.Repository
 {

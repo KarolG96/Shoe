@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shoe.Services.ProductAPI.Models.Dto;
+using Shoe.Services.ProductAPI.Models;
 
 namespace Shoe.Services.ProductAPI.DbContexts
 {
