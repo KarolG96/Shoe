@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shoe.Services.ProductAPI.Models;
 using Shoe.Services.ProductAPI.Models.Dto;
+using Shoe.Services.ProductAPI.Models.Dtos;
 using Shoe.Services.ProductAPI.Repository;
 
 namespace Shoe.Services.ProductAPI.Controllers

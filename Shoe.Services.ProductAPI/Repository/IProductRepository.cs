@@ -1,4 +1,5 @@
 ﻿using Shoe.Services.ProductAPI.Models;
+using Shoe.Services.ProductAPI.Models.Dtos;
 
 namespace Shoe.Services.ProductAPI.Repository
 {
