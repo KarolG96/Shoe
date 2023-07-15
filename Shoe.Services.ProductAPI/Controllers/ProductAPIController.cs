@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Shoe.Services.ProductAPI.Models;
 using Shoe.Services.ProductAPI.Models.Dto;
 using Shoe.Services.ProductAPI.Repository;
+using System.Data;
 
 namespace Shoe.Services.ProductAPI.Controllers
 {
@@ -16,8 +18,8 @@ namespace Shoe.Services.ProductAPI.Controllers
 			_productRepository = productRepository;
 			this._response = new ResponseDto();
 		}
-
-		[HttpGet]
+        [Authorize]
+        [HttpGet]
 		public async Task<object> Get()
 		{
 			try
@@ -34,7 +36,8 @@ namespace Shoe.Services.ProductAPI.Controllers
 		}
 
 		[HttpGet]
-		[Route("{id}")]
+        [Authorize]
+        [Route("{id}")]
 		public async Task<object> Get(int id)
 		{
 			try
@@ -51,7 +54,8 @@ namespace Shoe.Services.ProductAPI.Controllers
 		}
 
 		[HttpPost]
-		public async Task<object> Post([FromBody] ProductDto productDto)
+        [Authorize]
+        public async Task<object> Post([FromBody] ProductDto productDto)
 		{
 			try
 			{
@@ -67,7 +71,8 @@ namespace Shoe.Services.ProductAPI.Controllers
 		}
 
 		[HttpPut]
-		public async Task<object> Put([FromBody] ProductDto productDto)
+        [Authorize]
+        public async Task<object> Put([FromBody] ProductDto productDto)
 		{
 			try
 			{
@@ -78,12 +83,13 @@ namespace Shoe.Services.ProductAPI.Controllers
 			{
 				_response.IsSuccess = false;
 				_response.ErrorMessage = new List<string>() { ex.ToString() };
-			}
+            }
 			return _response;
 		}
 
 		[HttpDelete]
-		[Route("{id}")]
+        [Authorize(Roles = "Admin")]
+        [Route("{id}")]
 		public async Task<object> Delete(int id)
 		{
 			try
