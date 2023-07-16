@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddControllers();
 
+//Config Authentication
 builder.Services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
 {
 	options.Authority = "https://localhost:44384/";
@@ -22,6 +23,7 @@ builder.Services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
 	};
 });
 
+//Config Authorization
 builder.Services.AddAuthorization(options =>
 {
 	options.AddPolicy("ApiScope", policy =>
@@ -33,11 +35,11 @@ builder.Services.AddAuthorization(options =>
 	
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
+builder.Services.AddSwaggerGen(options =>
 {
-	c.SwaggerDoc("v1", new OpenApiInfo { Title = "Shoe.Services.ProductAPI", Version = "v1" });
-	c.EnableAnnotations();
-	c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+	options.SwaggerDoc("v1", new OpenApiInfo { Title = "Shoe.Services.ProductAPI", Version = "v1" });
+    options.EnableAnnotations();
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
 	{
 		Description = @"Enter 'Bearer' [space] and your token",
 		Name = "Authorization",
@@ -45,21 +47,21 @@ builder.Services.AddSwaggerGen(c =>
 		Type = SecuritySchemeType.ApiKey,
 		Scheme = "Bearer"
 	});
-	c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement {
+				{
+					new OpenApiSecurityScheme
 					{
-						new OpenApiSecurityScheme
+						Reference = new OpenApiReference
 						{
-							Reference = new OpenApiReference
-							{
-								Type=ReferenceType.SecurityScheme,
-								Id="Bearer"
-							},
-							Scheme="oauth2",
-							Name="Bearer",
-							In=ParameterLocation.Header
+							Type=ReferenceType.SecurityScheme,
+							Id="Bearer"
+						},
+						Scheme="oauth2",
+						Name="Bearer",
+						In=ParameterLocation.Header
 						},
 						new List<string>()
-					}
+				}
 	});
 });
 
@@ -68,6 +70,8 @@ builder.Services.AddSwaggerGen(c =>
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+//Adding product repository
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
