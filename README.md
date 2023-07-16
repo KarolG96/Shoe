@@ -1,3 +1,5 @@
+W trakcie realizacji.
+
 Aplikacja WebAPI desktopowa do obsługi sklepu internetowego. 
 Wymagania do uruchomienia: 
 -VS 2022 .NET 6.0
@@ -9,3 +11,4 @@ W solution zawarte są cztery pod projekty które kounikują się ze sobą za po
 
 Aplikacja obsługuje możliwośc rejstracji, składania zamówień, płatności oraz rewizji zamówień. 
 Z poziomu administratora można dodawać, edytyować oraz usuwać produkty. Administartor ma także możliwość edycji zamówień.
+
