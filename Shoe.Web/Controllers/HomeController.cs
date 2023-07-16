@@ -34,7 +34,7 @@ namespace Shoe.Web.Controllers
 			return View(list);
 		}
 
-		[Authorize]
+		//[Authorize]
 		public async Task<IActionResult> Details(int productId)
 		{
 			ProductDto model = new();
@@ -48,7 +48,7 @@ namespace Shoe.Web.Controllers
 
         [HttpPost]
         [ActionName("Details")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> DetailsPost(ProductDto productDto)
         {
             CartDto cartDto = new()

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication;
 using Shoe.Web;
 using Shoe.Web.Services;
 using Shoe.Web.Services.IServices;
@@ -16,6 +17,7 @@ builder.Services.AddScoped<ICartService, CartService>();
 
 builder.Services.AddControllersWithViews();
 
+//Add authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = "Cookies";
@@ -29,7 +31,10 @@ builder.Services.AddAuthentication(options =>
                     options.ClientId = "shoe";
                     options.ClientSecret = "secret";
                     options.ResponseType = "code";
-                    
+
+                    options.ClaimActions.MapJsonKey("role", "role", "role");
+                    options.ClaimActions.MapJsonKey("sub", "sub", "sub");
+
                     options.TokenValidationParameters.NameClaimType = "name";
                     options.TokenValidationParameters.RoleClaimType = "role";
                     options.Scope.Add("shoe");
