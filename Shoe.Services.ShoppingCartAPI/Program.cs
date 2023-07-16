@@ -4,6 +4,7 @@ using Shoe.Services.ShoppingCartAPI;
 using Shoe.Services.ShoppingCartAPI.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Shoe.Services.ShoppingCartAPI.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +53,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<ICartRepository, CartRepository>();
 
 //Config Authentication
 builder.Services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
