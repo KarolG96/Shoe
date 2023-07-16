@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Shoe.Web.Models;
 using Shoe.Web.Services.IServices;
+using System.Net.Http.Headers;
 using System.Text;
 
 namespace Shoe.Web.Services
@@ -30,6 +31,11 @@ namespace Shoe.Web.Services
 				{
 					message.Content = new StringContent(JsonConvert.SerializeObject(apiRequest.Data),
 						Encoding.UTF8,"application/json");
+				}
+
+				if (!string.IsNullOrEmpty(apiRequest.AccessToken))
+				{
+					client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiRequest.AccessToken);
 				}
 
 				HttpResponseMessage apiResponse = null;
