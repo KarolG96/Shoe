@@ -1,3 +1,4 @@
+using Duende.IdentityServer.AspNetIdentity;
 using Duende.IdentityServer.Services;
 using Mango.Services.Identity;
 using Mango.Services.Identity.DbContexts;
@@ -5,6 +6,7 @@ using Mango.Services.Identity.Initializer;
 using Mango.Services.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Shoe.Services.Identity.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +15,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IDbInitializer, DbInitializer>();
-builder.Services.AddScoped<IProfileService, IProfileService>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
 
 
 var identityBuilder = builder.Services.AddIdentityServer(options =>
