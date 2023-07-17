@@ -1,14 +1,44 @@
-W trakcie realizacji.
+## Sklep internetowy - README
 
-Aplikacja WebAPI desktopowa do obsługi sklepu internetowego. 
-Wymagania do uruchomienia: 
--VS 2022 .NET 6.0
--MS SQL Server ( w kodzie aplikacji wbudowany jest inicjalizator bazy danych )
+![Sklep internetowy](shoe_store_banner.png)
 
-Aby połączyć aplikację z bazą danych należy uaktualnić połączenie z SQL server w pliku appsettingjson, po ustanowieniu połączenia należy w Nuget Package Console wporwadzić komendę update-database. Aplikacja używa EntityFrameworkCore do obsługi baz danych.
+Witamy w aplikacji WebAPI desktopowej do obsługi sklepu internetowego! Aplikacja umożliwia zarządzanie sklepem internetowym, obsługę zamówień, płatności oraz rejestrację użytkowników. Poniżej przedstawiamy informacje dotyczące uruchamiania, konfiguracji i dokumentacji aplikacji.
 
-W solution zawarte są cztery pod projekty które kounikują się ze sobą za pomocą API. Głównym projektem jest Shoe.Web, jest to projekt obsługujący aplikację desktopową. Zawiera on elementy frontend. Pozostałe pojekty to Service.ProductAPI, Service.ShoppingCartAPI oraz Service.Identity. Obsługują one poprzez połączenia przez API określone funkcjonalnośi aplikacji. 
+### Wymagania systemowe
 
-Aplikacja obsługuje możliwośc rejstracji, składania zamówień, płatności oraz rewizji zamówień. 
-Z poziomu administratora można dodawać, edytyować oraz usuwać produkty. Administartor ma także możliwość edycji zamówień.
+Aby uruchomić aplikację, musisz spełnić następujące wymagania:
 
+- Visual Studio 2022 z wersją .NET 6.0
+- MS SQL Server (w kodzie aplikacji znajduje się inicjalizator bazy danych)
+
+### Instalacja i konfiguracja
+
+1. Otwórz projekt w Visual Studio 2022.
+2. Skonfiguruj połączenie z bazą danych SQL Server w pliku `appsettings.json`.
+3. Po ustanowieniu połączenia z bazą danych, uruchom konsolę NuGet Package Manager i wprowadź komendę `update-database`. To spowoduje migrację i utworzenie niezbędnych tabel w bazie danych.
+4. Uruchom aplikację.
+
+### Struktura projektu
+
+W rozwiązaniu (solution) znajdują się cztery projekty, które komunikują się ze sobą za pomocą interfejsu API. Główny projekt to `Shoe.Web`, który obsługuje aplikację desktopową i zawiera elementy frontendowe. Pozostałe projekty to `Service.ProductAPI`, `Service.ShoppingCartAPI` oraz `Service.Identity`. Odpowiadają one za funkcjonalności aplikacji i komunikację poprzez interfejsy API.
+
+### Używanie Mappera
+
+Aplikacja wykorzystuje Mappera do mapowania obiektów między warstwami. Mapper umożliwia przekształcenie danych między modelami domenowymi a modelami DTO (Data Transfer Object), co ułatwia komunikację między frontendem a backendem. Mapper jest skonfigurowany w projekcie `Shoe.Web` i jest używany do konwersji obiektów w celu obsługi żądań API.
+
+### Funkcje aplikacji
+
+Aplikacja obsługuje następujące funkcje:
+
+- Rejestracja użytkowników: Aby założyć nowe konto, użyj formularza rejestracji dostępnego pod przestrzenią logowania.
+- Zarządzanie bazą produktów poprzez API: Administrator może dodawać, usuwać i edytować produkty w sklepie. Produkty są dostępne za pomocą dwóch metod GET. Możliwe jest także dodawanie nowych produktów za pomocą metody POST, edycja produktów za pomocą metody PUT oraz usuwanie produktów za pomocą metody DELETE.
+- Obsługa koszyka: Zalogowani użytkownicy mogą dodawać, usuwać i edytować zamówienia w koszyku. Metoda GET jest używana do pobierania zawartości koszyka, a metody POST są wykorzystywane do dodawania nowych pozycji do koszyka.
+
+### Dokumentacja API
+
+Będzie dodana
+
+### Autorzy
+
+- Karol Gajda 
+- Jakub Gajda 
