@@ -1,7 +1,5 @@
 ## Sklep internetowy - README
 
-![Sklep internetowy](shoe_store_banner.png)
-
 Witamy w aplikacji WebAPI desktopowej do obsługi sklepu internetowego! Aplikacja umożliwia zarządzanie sklepem internetowym, obsługę zamówień, płatności oraz rejestrację użytkowników. Poniżej przedstawiamy informacje dotyczące uruchamiania, konfiguracji i dokumentacji aplikacji.
 
 ### Wymagania systemowe
